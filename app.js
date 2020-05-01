@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const database = require("./Helper/Database.js");
+const database = require("./Config/Database.js");
 const bodyParser = require("body-parser");
 var schedule = require("node-schedule");
 const path = require("path");

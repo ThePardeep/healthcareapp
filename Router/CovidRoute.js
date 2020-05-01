@@ -106,8 +106,6 @@ Router.post("/insert/state/daily", (req, res) => {
               return;
             }
 
-            console.log(data);
-
             let newDailyStateRecord = [];
             newDailyStateRecord = getDailyStateRecord(
               previousData.length,
@@ -161,45 +159,33 @@ DESC : Update Daily Cases
 
 Router.post("/update/state/daily", (req, res) => {
   if (req.body.refresh) {
-    StateDailyCases.find()
-      .then((previousData) => {
-        // console.log(previousData);
-        axios
-          .get("https://api.covid19india.org/data.json")
-          .then((result) => {
-            const data = result.data.statewise;
-            for (let i = 0; i < data.length; i++) {
-              const element = {
-                Active: data[i]["active"],
-                Confirmed: data[i]["confirmed"],
-                Deaths: data[i]["deaths"],
-                deltaConfirmed: data[i]["deltaconfirmed"],
-                deltaDeaths: data[i]["deltadeaths"],
-                deltaRecovered: data[i]["deltarecovered"],
-                lastUpdatedTime: data[i]["lastupdatedtime"],
-                Recovered: data[i]["recovered"],
-                State: data[i]["state"],
-                StateCode: data[i]["statecode"],
-                stateNotes: data[i]["statenotes"],
-              };
+    axios
+      .get("https://api.covid19india.org/data.json")
+      .then((result) => {
+        const data = result.data.statewise;
+        for (let i = 0; i < data.length; i++) {
+          const element = {
+            Active: data[i]["active"],
+            Confirmed: data[i]["confirmed"],
+            Deaths: data[i]["deaths"],
+            deltaConfirmed: data[i]["deltaconfirmed"],
+            deltaDeaths: data[i]["deltadeaths"],
+            deltaRecovered: data[i]["deltarecovered"],
+            lastUpdatedTime: data[i]["lastupdatedtime"],
+            Recovered: data[i]["recovered"],
+            State: data[i]["state"],
+            StateCode: data[i]["statecode"],
+            stateNotes: data[i]["statenotes"],
+          };
 
-              StateDailyCases.updateOne(
-                { State: element.State },
-                { $set: element }
-              );
-            }
-            res.json({
-              update: "success",
-              error: false,
-            });
-          })
-          .catch((err) => {
-            res.status(400).json({
-              error: true,
-              msg: "unable to update data",
-            });
-            throw err;
-          });
+          StateDailyCases.updateOne({ State: element.State }, { $set: element })
+            .then((updatedData) => {})
+            .catch((err) => {});
+        }
+        res.json({
+          update: "success",
+          error: false,
+        });
       })
       .catch((err) => {
         res.status(400).json({
@@ -213,7 +199,6 @@ Router.post("/update/state/daily", (req, res) => {
       error: true,
       msg: "unable to update data",
     });
-    throw err;
   }
 });
 

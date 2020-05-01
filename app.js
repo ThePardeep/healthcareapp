@@ -41,14 +41,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //SET STATIC FOLDER
 app.use("/static", express.static("/public"));
-app.use(express.static("health_care_app/build"));
+app.use(express.static("client/build"));
 
 //PRODUCTION Setup
 
 if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.sendFile(
-      path.resolve(__dirname, "health_care_app/build", "index.html")
+      path.resolve(__dirname, "client/build", "index.html")
     );
   });
 }

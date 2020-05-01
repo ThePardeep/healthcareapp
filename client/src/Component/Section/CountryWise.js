@@ -3,28 +3,33 @@ import indiaSvg from "../../Public/Images/india.svg";
 const CountryWise = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setError] = useState({ error: false });
-  const [totalCases, setTotalCases] = useState([]);
-  useEffect(() => {
-    if (props.data.length > 0 && props.error.error === false) {
-      let tc = {};
-      for (let index = 0; index < props.data.length; index++) {
-        const element = props.data[index];
+  const [totalCases, setTotalCases] = useState({});
+  useEffect(
+    (props) => {
+      console.log(props);
+      console.log(props.data.length);
+      if (props.data.length > 0 && props.error.error === false) {
+        let tc = {};
+        for (let index = 0; index < props.data.length; index++) {
+          const element = props.data[index];
 
-        if (element["State"] == "Total") {
-          tc = element;
-          break;
+          if (element["State"] == "Total") {
+            tc = element;
+            break;
+          }
         }
+
+        setIsLoading(false);
+        setTotalCases(tc);
       }
 
-      setIsLoading(false);
-      setTotalCases(tc);
-    }
-
-    if (props.error.error) {
-      setError(props.error);
-      setIsLoading(false);
-    }
-  }, [props]);
+      if (props.error.error) {
+        setError(props.error);
+        setIsLoading(false);
+      }
+    },
+    [props]
+  );
   return (
     <section className="firstSec">
       <div className="heading">

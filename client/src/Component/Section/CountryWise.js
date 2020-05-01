@@ -5,7 +5,7 @@ const CountryWise = (props) => {
   const [isError, setError] = useState({ error: false });
   const [totalCases, setTotalCases] = useState({});
   useEffect(
-    (props) => {
+    () => {
       console.log(props);
       console.log(props.data.length);
       if (props.data.length > 0 && props.error.error === false) {

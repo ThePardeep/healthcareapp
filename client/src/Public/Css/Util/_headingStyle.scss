@@ -1,0 +1,22 @@
+@mixin Primary-heading {
+  text-align: center;
+  h4 {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin: 0%;
+
+    margin-top: 14px;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  h4:hover {
+    -webkit-transform: skewY(-2deg) skewX(-15deg) scale(1.1);
+    transform: skewY(-2deg) skewX(-15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+    @media (max-width: 576px) {
+      -webkit-transform: skewY(-1deg) skewX(-12deg) scale(0.9);
+      transform: skewY(-1deg) skewX(-12deg) scale(0.9);
+    }
+  }
+}

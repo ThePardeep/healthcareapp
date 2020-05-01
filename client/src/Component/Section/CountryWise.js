@@ -4,8 +4,8 @@ const CountryWise = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setError] = useState({ error: false });
   const [totalCases, setTotalCases] = useState({});
-  useEffect(
-    () => {
+  useEffect(() => {
+    if (props.data != "undefined") {
       console.log(props);
       console.log(props.data.length);
       if (props.data.length > 0 && props.error.error === false) {
@@ -27,9 +27,8 @@ const CountryWise = (props) => {
         setError(props.error);
         setIsLoading(false);
       }
-    },
-    [props]
-  );
+    }
+  }, [props]);
   return (
     <section className="firstSec">
       <div className="heading">

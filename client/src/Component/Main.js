@@ -14,6 +14,7 @@ const Main = () => {
         if (res.data.error) {
           return;
         }
+        console.log(res);
         setStateData(res.data.cases);
       })
       .catch((err) => {

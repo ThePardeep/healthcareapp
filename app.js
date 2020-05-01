@@ -34,6 +34,9 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//Routes
+app.use("/covid", CovidRoute);
+
 //PRODUCTION Setup
 
 if (process.env.NODE_ENV === "production") {
@@ -44,9 +47,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
-//Routes
-app.use("/covid", CovidRoute);
 
 //SERVER LISTENER
 app.listen(PORT, () => {

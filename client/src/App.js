@@ -6,6 +6,7 @@ import Header from "./Component/Layout/Header";
 import Main from "./Component/Main.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllState from "./Component/Pages/AllState";
+import { Footer } from "./Component/Layout/Footer";
 
 function App(props) {
   return (
@@ -28,6 +29,8 @@ function App(props) {
             }}
           />
         </Switch>
+
+        <Footer />
       </div>
     </Router>
   );

@@ -683,6 +683,115 @@ body {
   text-align: center;
 }
 
+.footer-container {
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background-color: lightblue;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.links {
+  height: 120px;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  font-family: "Nunito";
+  grid-column: 1fr 1fr;
+      grid-template-areas: "first second" "third fourth";
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 700px) {
+  .links {
+    display: -ms-grid;
+    display: grid;
+    grid-column: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 2vw;
+        grid-template-areas: "first second third fourth";
+  }
+}
+
+.link1 {
+  width: 150px;
+  color: #130e0e;
+  font-size: 20px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: first;
+  text-decoration: none;
+}
+
+.link2 {
+  width: 150px;
+  text-decoration: none;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: second;
+  color: #130e0e;
+  font-size: 20px;
+}
+
+.link3 {
+  width: 150px;
+  text-decoration: none;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: third;
+  color: #130e0e;
+  font-size: 20px;
+}
+
+.link4 {
+  width: 150px;
+  text-decoration: none;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: fourth;
+  color: #130e0e;
+  font-size: 20px;
+}
+
+.social {
+  height: 80px;
+  width: 300px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+      grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+}
+
+.media1,
+.media2,
+.media3,
+.media4 {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+}
+
 @-webkit-keyframes moveRight {
   0% {
     opacity: 0.1;

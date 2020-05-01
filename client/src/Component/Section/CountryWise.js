@@ -3,7 +3,7 @@ import indiaSvg from "../../Public/Images/india.svg";
 const CountryWise = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setError] = useState({ error: false });
-  const [totalCases, setTotalCases] = useState({});
+  const [totalCases, setTotalCases] = useState([]);
   useEffect(() => {
     if (props.data.length > 0 && props.error.error === false) {
       let tc = {};

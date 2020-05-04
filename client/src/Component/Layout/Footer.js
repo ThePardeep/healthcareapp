@@ -11,18 +11,24 @@ export const Footer = () => {
         <Link className="link2" to="/privacy-polices">
           Privacy Polices
         </Link>
-        <Link className="link3" to="link4">
-          Some
-        </Link>
-        <Link className="link4" to="/tmc">
+
+        <Link className="link3" to="/tmc">
           Terms And Conditions
         </Link>
+        <a className="link4" target="blank" href="https://www.mohfw.gov.in/">
+          Mohfw
+        </a>
       </div>
       <div className="social">
-        <div className="media1"></div>
-        <div className="media2"></div>
-        <div className="media3"></div>
-        <div className="media4"></div>
+        <div className="media1">
+          <i className="fa fa-facebook"></i>
+        </div>
+        <div className="media2">
+          <i className="fa fa-twitter"></i>
+        </div>
+        <div className="media3">
+          <i className="fa fa-whatsapp"></i>
+        </div>
       </div>
     </div>
   );

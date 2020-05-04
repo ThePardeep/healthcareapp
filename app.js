@@ -4,10 +4,12 @@ const database = require("./Config/Database.js");
 const bodyParser = require("body-parser");
 var schedule = require("node-schedule");
 const path = require("path");
+const passport = require("passport");
 
 const app = express();
 
 const CovidRoute = require("./Router/CovidRoute.js");
+const UserRoute = require("./Router/User.js");
 
 //DATABASE CONNECTION
 
@@ -34,8 +36,14 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// PASSPORT  MIDDLEWARE
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 //Routes
 app.use("/covid", CovidRoute);
+app.use("/user", UserRoute);
 
 //PRODUCTION Setup
 

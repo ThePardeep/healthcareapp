@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import indiaSvg from "../../Public/Images/india.svg";
+import { IsLoading } from "../Helper/IsLoading";
 const CountryWise = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setError] = useState({ error: false });
   const [totalCases, setTotalCases] = useState({});
   useEffect(() => {
     if (props.data != "undefined") {
-      console.log(props);
-      console.log(props.data.length);
       if (props.data.length > 0 && props.error.error === false) {
         let tc = {};
         for (let index = 0; index < props.data.length; index++) {
@@ -42,7 +41,7 @@ const CountryWise = (props) => {
         <div className="data">
           {isLoading === true ? (
             <>
-              <p>isLoading</p>{" "}
+              <IsLoading isLoading={isLoading} />
             </>
           ) : (
             <>

@@ -9,10 +9,12 @@
     "axios": "^0.19.2",
     "google-maps-react": "^2.0.6",
     "react": "^16.13.1",
+    "react-addons-transition-group": "^15.6.2",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "react-svg": "^11.0.20"
+    "react-svg": "^11.0.20",
+    "react-transition-group": "^4.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

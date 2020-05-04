@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Card from "../Helper/Card";
-import { Link } from "react-router-dom";
+import { IsLoading } from "../Helper/IsLoading";
 
 const AllState = (props) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,11 +34,15 @@ const AllState = (props) => {
       <hr className="hr-style" />
       <div className="body" style={{ textAlign: "center" }}>
         {isLoading === true ? (
-          <>'</>
+          <>
+            <IsLoading isLoading={isLoading} />
+          </>
         ) : (
           <>
             {isError.error == true ? (
-              <></>
+              <>
+                <p>{isError.msg}</p>
+              </>
             ) : (
               <div className="all-card">
                 {data.map((val, index) => {
@@ -47,7 +51,7 @@ const AllState = (props) => {
                   }
                   return (
                     <div
-                      key={index}
+                      key={val._id}
                       style={{
                         margin: "10px",
                         display: "inline-block",
@@ -55,7 +59,6 @@ const AllState = (props) => {
                       }}
                     >
                       <Card
-                        key={index}
                         data={val}
                         error={isError.error}
                         isLoading={isLoading}

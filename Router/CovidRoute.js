@@ -2,6 +2,7 @@ const Router = require("express").Router();
 const DailyCasesSchema = require("../Schema/DailyCases.js");
 const StateDailyCases = require("../Schema/stateDailyCases");
 const axios = require("axios");
+const DistrictDataSchema = require("../Schema/District");
 
 /*
 ROUTE_NAME : '/insert/daily'
@@ -254,7 +255,7 @@ Router.get("/get/dailycases", (req, res) => {
     })
     .catch((err) => {
       res.status(200).json({
-        error: error,
+        error: true,
         msg: "Unable To Fetch Cases",
       });
       throw err;
@@ -277,11 +278,130 @@ Router.get("/get/cases/statewise", (req, res) => {
     })
     .catch((err) => {
       res.status(200).json({
-        error: error,
+        error: true,
         msg: "Unable To Fetch Cases",
       });
       throw err;
     });
+});
+
+/*
+ROUTE_NAME : '/insert/district'
+TYPE : POST
+DESC : Insert COVID19 CASES DistrictWise
+*/
+
+Router.post("/insert/district", (req, res) => {
+  axios
+    .get("https://api.covid19india.org/state_district_wise.json")
+    .then((result) => {
+      const data = result.data;
+      let temp = [];
+      let DistrictDataArray = [];
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const districtsData = data[key].districtData;
+
+          for (const districtName in districtsData) {
+            if (districtsData.hasOwnProperty(districtName)) {
+              const districtData = districtsData[districtName];
+
+              temp.push({
+                DistrictName: districtName,
+                Notes: districtData.notes,
+                Active: districtData.active,
+                Confirmed: districtData.confirmed,
+                Deceased: districtData.deceased,
+                Recovered: districtData.recovered,
+                Delta: {
+                  Confirmed: districtData.delta.confirmed,
+                  Deceased: districtData.delta.deceased,
+                  Recovered: districtData.delta.recovered,
+                },
+              });
+            }
+          }
+
+          DistrictDataArray.push({
+            State: key,
+            Districts: Array.from(temp),
+          });
+          temp = [];
+        }
+      }
+      DistrictDataSchema.insertMany(DistrictDataArray)
+        .then((result) => {
+          res.status(200).json({
+            error: false,
+            districtsData: result,
+          });
+        })
+        .catch((err) => {
+          res.status(200).json({
+            error: false,
+            msg: "Unable To Insert Cases",
+          });
+          throw err;
+        });
+    })
+    .catch((err) => {
+      res.status(200).json({
+        error: true,
+        msg: "Unable To Insert Cases",
+      });
+      throw err;
+    });
+});
+
+/*
+ROUTE_NAME : '/get/cases/state/districts'
+TYPE : POST
+DESC : Get All Cases Of Particular State
+*/
+
+Router.post("/get/cases/state/districts", (req, res) => {
+  const state = req.body.state;
+
+  if (state == "undefined" || state == "") {
+    res.status(200).json({
+      error: true,
+      msg: "Unable To Fetch Cases Provide Correct State",
+    });
+    return;
+  }
+
+  StateDailyCases.find({ State: state }).then((stateData) => {
+    if (stateData.length == 0) {
+      res.status(200).json({
+        error: true,
+        msg: "State Not Found",
+      });
+      return;
+    }
+
+    DistrictDataSchema.find({ State: state })
+      .then((districtData) => {
+        res.status(200).json({
+          error: false,
+          stateData,
+          districtData,
+        });
+      })
+      .catch((err) => {
+        res.status(200).json({
+          error: true,
+          msg: "Unable To Fetch Cases",
+        });
+        throw err;
+      })
+      .catch((err) => {
+        res.status(200).json({
+          error: true,
+          msg: "Unable To Fetch Cases",
+        });
+        throw err;
+      });
+  });
 });
 
 module.exports = Router;

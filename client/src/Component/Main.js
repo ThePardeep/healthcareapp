@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CountryWise from "./Section/CountryWise";
 import StateWise from "./Section/StateWise";
 import Axios from "axios";
+import Search from "./Layout/Search";
 const Main = () => {
   const [stateData, setStateData] = useState([]);
   const [stateDataError, setStateDataError] = useState({
@@ -30,6 +31,10 @@ const Main = () => {
 
       <CountryWise data={stateData} error={stateDataError} />
       <StateWise data={stateData} error={stateDataError} />
+      <div className="mob-search-form">
+        <hr className="hr-style" />
+        <Search />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Helper/Card";
 import { Link } from "react-router-dom";
+import { IsLoading } from "../Helper/IsLoading";
 function StateWise(props) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,11 +38,15 @@ function StateWise(props) {
       </div>
       <div className="body">
         {isLoading === true ? (
-          <></>
+          <>
+            <IsLoading isLoading={isLoading} />
+          </>
         ) : (
           <>
             {isError.error == true ? (
-              <></>
+              <>
+                <p>{isError.msg}</p>
+              </>
             ) : (
               <div className="all-card">
                 {data.map((val, ind) => {

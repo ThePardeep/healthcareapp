@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { IsLoading } from "./IsLoading";
 
 function Card(props) {
   const [data, setData] = useState(props.data);
@@ -10,7 +11,7 @@ function Card(props) {
     <div className="card">
       {isLoading == true ? (
         <>
-          <p>Is Loading</p>
+          <IsLoading isLoading={isLoading} />
         </>
       ) : (
         <>
@@ -66,7 +67,7 @@ function Card(props) {
                 <div className="card-btn">
                   <Link
                     className="card-link"
-                    to={`/state/?state=${data.State.replace(" ", "-")}`}
+                    to={`/state/?state=${data.State.replace(/\s/g, "_")}`}
                   >
                     More Info
                   </Link>

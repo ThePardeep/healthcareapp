@@ -7,7 +7,8 @@ import AllState from "./Component/Pages/AllState";
 import { Footer } from "./Component/Layout/Footer";
 import { Login } from "./Component/User/Login";
 import { State } from "./Component/Pages/State";
-
+import { DailyAll } from "./Component/Pages/DailyAll";
+import { Admin } from "./Component/User/Admin";
 function App(props) {
   return (
     <Router>
@@ -29,8 +30,25 @@ function App(props) {
             }}
           />
           <Route
+            path="/daily/all/"
+            render={() => {
+              return <DailyAll />;
+            }}
+          />
+          <Route
             path="/login"
             render={() => {
+              if (localStorage.getItem("auth")) {
+                const authData = JSON.parse(localStorage.getItem("auth"));
+
+                if (authData.expiresIn < Date.now() / 1000) {
+                  localStorage.removeItem("auth");
+                  return <Login />;
+                } else {
+                  window.location = "/admin";
+                }
+              }
+
               return <Login />;
             }}
           />
@@ -40,6 +58,24 @@ function App(props) {
             path="/state"
             render={(props) => {
               return <State props={props} />;
+            }}
+          />
+
+          <Route
+            exact
+            path="/admin"
+            render={(props) => {
+              if (localStorage.getItem("auth")) {
+                const authData = JSON.parse(localStorage.getItem("auth"));
+
+                if (authData.expiresIn < Date.now() / 1000) {
+                  localStorage.removeItem("auth");
+                  return <Login />;
+                }
+                return <Admin />;
+              } else {
+                return <Login />;
+              }
             }}
           />
         </Switch>

@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const database = require("./Config/Database.js");
 const bodyParser = require("body-parser");
-var schedule = require("node-schedule");
 const path = require("path");
 const passport = require("passport");
 
@@ -45,6 +44,8 @@ app.use(passport.session());
 app.use("/covid", CovidRoute);
 app.use("/user", UserRoute);
 
+//JWT Strategy
+require("./Config/Passport.js")(passport);
 //PRODUCTION Setup
 
 if (process.env.NODE_ENV === "production") {

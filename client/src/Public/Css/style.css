@@ -869,7 +869,7 @@ body {
   flex-direction: column;
   text-align: center;
   /* border: 1px solid black; */
-  height: 400px;
+  height: auto;
   width: 400px;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1350,5 +1350,189 @@ body {
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
   }
+}
+
+.sec-container {
+  margin-top: 20px;
+}
+
+.dailyCases {
+  text-align: center;
+}
+
+.dailyCases .heading {
+  font-size: 30px;
+  font-weight: 300;
+  color: #bdbbbb;
+  font-family: "Oswald";
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .dailyCases .heading {
+    font-size: 20px;
+  }
+}
+
+.dailyCases .heading h4 {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin: 0%;
+  margin-top: 14px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.dailyCases .heading h4:hover {
+  -webkit-transform: skewY(-2deg) skewX(-15deg) scale(1.1);
+  transform: skewY(-2deg) skewX(-15deg) scale(1.1);
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 576px) {
+  .dailyCases .heading h4:hover {
+    -webkit-transform: skewY(-1deg) skewX(-12deg) scale(0.9);
+    transform: skewY(-1deg) skewX(-12deg) scale(0.9);
+  }
+}
+
+.dailyCases .body .more-btn {
+  margin-top: 20px;
+}
+
+.dailyCases .body .dailyCard {
+  height: auto;
+  padding-bottom: 20px;
+  font-family: Nunito;
+  text-align: center;
+}
+
+.dailyCases .body .dailyCard .card-item {
+  margin-left: 40px;
+}
+
+.dailyCases .body .dailyCard .card-item .tc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dailyCases .body .dailyCard .card-item .tc div {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  background-color: #337ce9;
+  border: 1px solid #809dee;
+}
+
+.dailyCases .body .dailyCard .card-item .tc h4 {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.dailyCases .body .dailyCard .card-item .td {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dailyCases .body .dailyCard .card-item .td div {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  background-color: #ec3023;
+  border: 1px solid #d16e3f;
+}
+
+.dailyCases .body .dailyCard .card-item .td h4 {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.dailyCases .body .dailyCard .card-item .tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dailyCases .body .dailyCard .card-item .tr div {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  background-color: #49e049;
+  border: 1px solid #dafd88;
+}
+
+.dailyCases .body .dailyCard .card-item .tr h4 {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.admin .heading {
+  font-size: 30px;
+  font-weight: 300;
+  color: #bdbbbb;
+  font-family: "Oswald";
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .admin .heading {
+    font-size: 20px;
+  }
+}
+
+.admin .heading h4 {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin: 0%;
+  margin-top: 14px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.admin .heading h4:hover {
+  -webkit-transform: skewY(-2deg) skewX(-15deg) scale(1.1);
+  transform: skewY(-2deg) skewX(-15deg) scale(1.1);
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 576px) {
+  .admin .heading h4:hover {
+    -webkit-transform: skewY(-1deg) skewX(-12deg) scale(0.9);
+    transform: skewY(-1deg) skewX(-12deg) scale(0.9);
+  }
+}
+
+.admin .body .output {
+  font-family: Nunito;
+  margin: 10px 0px;
+  text-align: center;
+}
+
+.admin .body .output p {
+  margin: 0px 10px;
+  font-size: 20px;
+}
+
+.admin .body .items .item {
+  margin: 20px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Nunito;
+}
+
+.admin .body .items .item p {
+  margin: 0px 20px;
+  font-size: 20px;
+}
+
+.admin .body .items .item button {
+  outline: none;
+  border: none;
+  padding: 10px 15px;
 }
 /*# sourceMappingURL=style.css.map */

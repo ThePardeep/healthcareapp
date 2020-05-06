@@ -4,7 +4,7 @@ const Search = () => {
   const [query, setQuery] = useState("");
 
   const onSearchSubmit = (e) => {
-    console.log(query);
+ 
     e.preventDefault();
   };
 

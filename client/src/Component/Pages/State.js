@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { IsLoading } from "../Helper/IsLoading";
-
+import { Link } from "react-router-dom";
 export const State = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setError] = useState({ error: false });
   const [stateData, setStateData] = useState([]);
   const [districtData, setDistrictData] = useState([]);
+  let state = "";
   useEffect(() => {
     const { location } = props.props;
     const search = location.search.split("=");
-    let state = "";
+
     if (search.length == 2 && search[1] != "") {
       state = search[1].replace(/_/g, " ");
 
@@ -112,6 +113,13 @@ export const State = (props) => {
                   {districtData.length > 0 ? (
                     <>
                       {districtData.map((item) => {
+                        let url = "";
+                        if (stateData.State != undefined) {
+                          url = `state=${stateData.State.replace(
+                            /\s/g,
+                            "_"
+                          )}?district=${item.DistrictName.replace(/\s/g, "_")}`;
+                        }
                         return (
                           <div className="district" key={item._id}>
                             <div className="dis">
@@ -140,6 +148,21 @@ export const State = (props) => {
                                     <b>Deceased :</b>
                                     {item.Deceased}
                                   </p>
+                                  <>
+                                    {stateData.State == "Punjab" &&
+                                    stateData.State != "" ? (
+                                      <>
+                                        <Link
+                                          className="hos-link"
+                                          to={`/hospitals?${url}`}
+                                        >
+                                          Search Hospital
+                                        </Link>
+                                      </>
+                                    ) : (
+                                      <></>
+                                    )}
+                                  </>
                                   {item.Notes == "" ? (
                                     <></>
                                   ) : (

@@ -4,6 +4,7 @@ const StateDailyCases = require("../Schema/stateDailyCases");
 const axios = require("axios");
 const DistrictDataSchema = require("../Schema/District");
 const passport = require("passport");
+const latlong = require("../Schema/latlongpunjab");
 /*
 ROUTE_NAME : '/insert/daily'
 TYPE : POST
@@ -495,5 +496,38 @@ Router.post(
       });
   }
 );
+
+/*
+ROUTE_NAME : '/search'
+TYPE : POST
+DESC : Search
+*/
+
+Router.post("/search", (req, res) => {
+  const query = req.body.query;
+
+  StateDailyCases.find({
+    State: { $regex: query, $options: "i" },
+  })
+    .then((result) => {
+      if (result.length > 0) {
+        res.status(200).json({
+          error: false,
+          result,
+        });
+        return;
+      }
+      res.status(200).json({
+        error: true,
+        msg: "result not found",
+      });
+    })
+    .catch((err) => {
+      res.status(200).json({
+        error: true,
+        msg: "result not found",
+      });
+    });
+});
 
 module.exports = Router;

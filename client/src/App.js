@@ -9,12 +9,22 @@ import { Login } from "./Component/User/Login";
 import { State } from "./Component/Pages/State";
 import { DailyAll } from "./Component/Pages/DailyAll";
 import { Admin } from "./Component/User/Admin";
+import { SearchResult } from "./Component/Pages/SearchResult";
+import Search from "./Component/Layout/Search";
+import { Hospital } from "./Component/Pages/Hospital";
+import { Splash } from "./Component/Helper/Splash";
 function App(props) {
   return (
     <Router>
       <div className="App">
         <Header />
-
+        {localStorage.getItem("sp-screen") == null ? (
+          <div className="sp-screen-container">
+            <Splash />
+          </div>
+        ) : (
+          <></>
+        )}
         <Switch>
           <Route
             exact
@@ -62,6 +72,20 @@ function App(props) {
           />
 
           <Route
+            path="/search"
+            render={(props) => {
+              return <SearchResult props={props} />;
+            }}
+          />
+
+          <Route
+            path="/hospitals"
+            render={(props) => {
+              return <Hospital props={props} />;
+            }}
+          />
+
+          <Route
             exact
             path="/admin"
             render={(props) => {
@@ -79,6 +103,11 @@ function App(props) {
             }}
           />
         </Switch>
+
+        <div className="mob-search-form">
+          <hr className="hr-style" />
+          <Search />
+        </div>
 
         <Footer />
       </div>

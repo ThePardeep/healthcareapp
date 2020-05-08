@@ -64,10 +64,6 @@ const Main = () => {
         showMoreBtn={true}
       />
       <StateWise data={stateData} error={stateDataError} />
-      <div className="mob-search-form">
-        <hr className="hr-style" />
-        <Search />
-      </div>
     </div>
   );
 };

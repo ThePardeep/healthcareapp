@@ -728,10 +728,20 @@ body {
             text-align: center;
             margin: 10px;
             height: auto;
-            padding-bottom: 10px;
+            padding-bottom: 20px;
+
             p {
               font-family: "Nunito";
             }
+          }
+          .hos-link {
+            display: inline-block;
+            color: black;
+            margin-top: 10px;
+            font-family: "Nunito";
+            padding: 10px 10px;
+            background-color: rgb(165, 161, 161);
+            text-decoration: none;
           }
         }
       }
@@ -970,5 +980,118 @@ body {
         }
       }
     }
+  }
+}
+
+.search-page,
+.hos-page {
+  .heading {
+    @media (max-width: 576px) {
+      font-size: 20px;
+    }
+    font-size: 30px;
+    font-weight: 300;
+    color: #bdbbbb;
+    font-family: "Oswald";
+    @include Primary-heading;
+  }
+  .body {
+    text-align: left;
+    font-family: "Nunito";
+    .items {
+      margin-left: 30px;
+      margin-right: 30px;
+      .item {
+        border: 1px solid black;
+        padding: 20px 10px;
+        margin-bottom: 10px;
+        h5 {
+          font-size: 20px;
+        }
+      }
+    }
+    .ccc {
+      margin: 10px;
+      display: inline-block;
+    }
+  }
+  .more-btn {
+    margin-top: 15px;
+    button {
+      font-family: "Nunito";
+      font-size: 20px;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      background-color: rgb(180, 177, 177);
+    }
+  }
+}
+
+.link-rec {
+  text-decoration: none;
+}
+
+.hos-card {
+  height: auto;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  .hos-card-header {
+    padding: 10px 0px;
+    text-align: center;
+    // display: inline-block;
+    img {
+      display: inline-block;
+    }
+    h4 {
+      font-family: Nunito;
+    }
+  }
+  .hos-card-body {
+    .hos-card-items {
+      margin-left: 5px;
+      margin-right: 5px;
+      .item {
+        p {
+          b {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sp-screen {
+  margin-left: 200px;
+  background-color: #ccc;
+  margin-top: 200px;
+  padding: 10px;
+  z-index: 1000;
+  @media (max-width: 576px) {
+    margin-top: 200px;
+    margin-left: 20px;
+  }
+  position: absolute;
+  .close-btn {
+    right: 0;
+    margin: 20px 0px;
+    @media (max-width: 576px) {
+      margin: 10px 0px;
+      margin-top: 0px;
+    }
+    i {
+      color: #fff;
+      font-size: 40px;
+    }
+  }
+  img {
+    @media (max-width: 576px) {
+      height: 500px;
+      width: 300px;
+    }
+    height: 800px;
+    width: 550px;
   }
 }

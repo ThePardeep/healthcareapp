@@ -4,13 +4,16 @@ const Search = () => {
   const [query, setQuery] = useState("");
 
   const onSearchSubmit = (e) => {
- 
     e.preventDefault();
+    if (query == "") {
+      return;
+    }
+    window.location = `/search?query=${query.replace(/\s/g, "_")}`;
   };
 
   return (
     <div>
-      <form onSubmit={onSearchSubmit.bind(this)}>
+      <form onSubmit={onSearchSubmit}>
         <input
           onChange={(e) => {
             setQuery(e.target.value);

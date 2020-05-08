@@ -9,6 +9,7 @@ const app = express();
 
 const CovidRoute = require("./Router/CovidRoute.js");
 const UserRoute = require("./Router/User.js");
+const MapRoute = require("./Router/MapApi.js");
 
 //DATABASE CONNECTION
 
@@ -43,6 +44,7 @@ app.use(passport.session());
 //Routes
 app.use("/covid", CovidRoute);
 app.use("/user", UserRoute);
+app.use("/map", MapRoute);
 
 //JWT Strategy
 require("./Config/Passport.js")(passport);

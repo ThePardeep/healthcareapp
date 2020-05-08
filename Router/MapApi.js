@@ -42,11 +42,16 @@ Router.post("/get/hospitals", (req, res) => {
               res.status(200).json({
                 error: true,
                 msg: result.data.status,
-                result,
+                res: result,
               });
             }
           })
-          .catch((err) => {});
+          .catch((err) => {
+            res.status(200).json({
+              error: true,
+              msg: "Invalid State Or District",
+            });
+          });
       } else {
         res.status(200).json({
           error: true,

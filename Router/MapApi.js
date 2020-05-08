@@ -32,7 +32,6 @@ Router.post("/get/hospitals", (req, res) => {
 
         Axios.get(url)
           .then((result) => {
-            console.log(result);
             if (result.data.results.length > 0) {
               res.status(200).json({
                 error: false,

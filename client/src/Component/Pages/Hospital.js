@@ -24,6 +24,7 @@ export const Hospital = (props) => {
           District: District[1].replace(/_/g, " "),
         })
           .then((res) => {
+            console.log(res);
             setIsLoading(false);
             if (res.data.error) {
               setError(res.data);

@@ -42,6 +42,7 @@ Router.post("/get/hospitals", (req, res) => {
               res.status(200).json({
                 error: true,
                 msg: result.data.status,
+                result,
               });
             }
           })

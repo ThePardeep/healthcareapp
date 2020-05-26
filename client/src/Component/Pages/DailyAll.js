@@ -29,7 +29,12 @@ export const DailyAll = () => {
   }, []);
   return (
     <div className="page-container">
-      <DailyCases data={dailyData} error={dailyDataError} showMoreBtn={false} />
+      <DailyCases
+        totalData={dailyData}
+        data={dailyData}
+        error={dailyDataError}
+        showMoreBtn={false}
+      />
     </div>
   );
 };

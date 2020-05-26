@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IsLoading } from "../Helper/IsLoading";
+import { DailyLineChart } from "../../Charts/DailyLineChart";
+
 function DailyCases(props) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,42 +40,49 @@ function DailyCases(props) {
                   <p>{isError.msg}</p>
                 </>
               ) : (
-                <div className="all-card">
-                  {data.map((val, ind) => {
-                    return (
-                      <div
-                        key={ind}
-                        style={{
-                          margin: "10px",
-                          display: "inline-block",
-                          // textAlign: "center",
-                        }}
-                      >
-                        <div className="card dailyCard">
-                          <div className="card-header">
-                            <h4>{val.date}</h4>
-                          </div>
-                          <div className="card-body">
-                            <div className="card-item">
-                              <div className="tc">
-                                <div></div>
-                                <h4>Confirmed : {val.dailyConfirmed}</h4>
-                              </div>
-                              <div className="tr">
-                                <div></div>
-                                <h4>Recovered : {val.dailyRecovered}</h4>
-                              </div>
-                              <div className="td">
-                                <div></div>
-                                <h4>Deceased : {val.dailyDeceased}</h4>
+                <>
+                  <div className="line-chart-daily">
+                    <div className="dlc">
+                      <DailyLineChart data={props.totalData} />
+                    </div>
+                  </div>
+                  <div className="all-card">
+                    {data.map((val, ind) => {
+                      return (
+                        <div
+                          key={ind}
+                          style={{
+                            margin: "10px",
+                            display: "inline-block",
+                            // textAlign: "center",
+                          }}
+                        >
+                          <div className="card dailyCard">
+                            <div className="card-header">
+                              <h4>{val.date}</h4>
+                            </div>
+                            <div className="card-body">
+                              <div className="card-item">
+                                <div className="tc">
+                                  <div></div>
+                                  <h4>Confirmed : {val.dailyConfirmed}</h4>
+                                </div>
+                                <div className="tr">
+                                  <div></div>
+                                  <h4>Recovered : {val.dailyRecovered}</h4>
+                                </div>
+                                <div className="td">
+                                  <div></div>
+                                  <h4>Deceased : {val.dailyDeceased}</h4>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                      );
+                    })}
+                  </div>
+                </>
               )}
             </>
           )}

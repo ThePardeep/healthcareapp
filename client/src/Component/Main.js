@@ -60,6 +60,7 @@ const Main = () => {
       <CountryWise data={stateData} error={stateDataError} />
       <DailyCases
         data={dailyData.slice(0, 4)}
+        totalData={dailyData}
         error={dailyDataError}
         showMoreBtn={true}
       />

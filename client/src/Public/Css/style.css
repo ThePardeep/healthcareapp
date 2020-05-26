@@ -1084,7 +1084,7 @@ body {
   width: 15px;
   display: inline-block;
   background-color: #49e049;
-  border: 1px solid #dafd88;
+  border: 1px solid #cbf36d;
 }
 
 .page-container .state-data .sd1 .left .tr h4 {
@@ -1709,5 +1709,83 @@ body {
     height: 500px;
     width: 300px;
   }
+}
+
+.doughnut-chart {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.line-chart-daily {
+  display: inline-block;
+  height: 300px;
+  width: 70%;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 800px) {
+  .line-chart-daily {
+    width: 100%;
+  }
+}
+
+.line-chart-daily .dlc .daily-data-graph .daily-data-graph-body {
+  height: 300px;
+  position: relative;
+}
+
+.line-chart-daily .dlc .daily-data-graph .daily-data-graph-body .dailyDeceasedDataGraph {
+  display: inline-block;
+  height: 300px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.line-chart-daily .dlc .daily-data-graph .daily-data-graph-body .dailyDeceasedDataGraph .grp {
+  height: 300px;
+}
+
+.about-data .about-list {
+  list-style: none;
+}
+
+.about-data .about-list li {
+  font-family: Nunito;
+  font-size: 24px;
+}
+
+.gp-district-data {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  height: 300px;
+  width: 70%;
+}
+
+@media (max-width: 800px) {
+  .gp-district-data {
+    width: 100%;
+  }
+}
+
+.gp-district-data .ddc {
+  text-align: center;
+}
+
+.gp-district-data .ddc .district-data-graph {
+  display: inline-block;
+}
+
+.gp-district-data .ddc .district-data-graph .district-data-graph-body .districtDataGraph {
+  display: inline-block;
+  height: 300px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.gp-district-data .ddc .district-data-graph .district-data-graph-body .districtDataGraph .grp {
+  height: 300px;
 }
 /*# sourceMappingURL=style.css.map */

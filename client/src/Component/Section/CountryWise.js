@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import indiaSvg from "../../Public/Images/india.svg";
 import { IsLoading } from "../Helper/IsLoading";
+import { CompletePieChart } from "../../Charts/CompletePieChart";
+
 const CountryWise = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setError] = useState({ error: false });
   const [totalCases, setTotalCases] = useState({});
+  const [pieChartData, setPieChartData] = useState([]);
   useEffect(() => {
     if (props.data != "undefined") {
       if (props.data.length > 0 && props.error.error === false) {
@@ -17,7 +20,14 @@ const CountryWise = (props) => {
             break;
           }
         }
+        const pieData = [
+          tc["Confirmed"],
+          tc["Recovered"],
+          tc["Active"],
+          tc["Deaths"],
+        ];
 
+        setPieChartData(pieData);
         setIsLoading(false);
         setTotalCases(tc);
       }
@@ -95,6 +105,9 @@ const CountryWise = (props) => {
             </>
           )}
         </div>
+      </div>
+      <div style={{ textAlign: "center" }}>
+        <CompletePieChart data={pieChartData} />
       </div>
     </section>
   );

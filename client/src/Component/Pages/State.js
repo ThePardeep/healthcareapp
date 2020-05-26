@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { IsLoading } from "../Helper/IsLoading";
 import { Link } from "react-router-dom";
+import { CompletePieChart } from "../../Charts/CompletePieChart";
+import { Districts } from "../../Charts/Districts";
+
 export const State = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setError] = useState({ error: false });
   const [stateData, setStateData] = useState([]);
+  const [pieChartData, setPieChartData] = useState([]);
   const [districtData, setDistrictData] = useState([]);
+
   let state = "";
   useEffect(() => {
     const { location } = props.props;
@@ -26,6 +31,14 @@ export const State = (props) => {
             setDistrictData(res.data.districtData[0].Districts);
           } else {
           }
+          const pieData = [
+            res.data.stateData[0]["Confirmed"],
+            res.data.stateData[0]["Recovered"],
+            res.data.stateData[0]["Active"],
+            res.data.stateData[0]["Deaths"],
+          ];
+
+          setPieChartData(pieData);
           setStateData(res.data.stateData[0]);
         })
         .catch((err) => {
@@ -103,7 +116,19 @@ export const State = (props) => {
                     </div>
                   </div>
                 </div>
-
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ textAlign: "center" }}>
+                    <CompletePieChart data={pieChartData} />
+                  </div>
+                  <div
+                    style={{ textAlign: "center" }}
+                    className="gp-district-data"
+                  >
+                    <div className="ddc">
+                      <Districts data={districtData} />
+                    </div>
+                  </div>
+                </div>
                 <div className="district-data">
                   <div className="heading">
                     <h4>Districts Data</h4>
@@ -172,7 +197,7 @@ export const State = (props) => {
                                         marginRight: "4px",
                                       }}
                                     >
-                                      <b>Nots :</b>
+                                      <b>Notes :</b>
                                       {item.Notes}
                                     </p>
                                   )}

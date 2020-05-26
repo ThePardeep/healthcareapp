@@ -646,7 +646,7 @@ body {
             width: 15px;
             display: inline-block;
             background-color: rgb(73, 224, 73);
-            border: 1px solid rgb(218, 253, 136);
+            border: 1px solid #cbf36d;
           }
           h4 {
             margin-left: 10px;
@@ -1093,5 +1093,81 @@ body {
     }
     height: 800px;
     width: 550px;
+  }
+}
+
+.doughnut-chart {
+  margin-top: 50px;
+  // display: inline-block;
+  text-align: center;
+}
+
+.line-chart-daily {
+  display: inline-block;
+  height: 300px;
+  width: 70%;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+  margin-bottom: 100px;
+  .dlc {
+    .daily-data-graph {
+      .daily-data-graph-body {
+        height: 300px;
+        position: relative;
+
+        .dailyDeceasedDataGraph {
+          display: inline-block;
+          height: 300px;
+          width: 100%;
+          position: relative;
+          margin-bottom: 50px;
+          .grp {
+            height: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.about-data {
+  .about-list {
+    list-style: none;
+    li {
+      font-family: Nunito;
+      font-size: 24px;
+    }
+  }
+}
+
+.gp-district-data {
+  text-align: center;
+
+  position: relative;
+
+  display: inline-block;
+  height: 300px;
+  width: 70%;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+  .ddc {
+    text-align: center;
+    .district-data-graph {
+      display: inline-block;
+      .district-data-graph-body {
+        .districtDataGraph {
+          display: inline-block;
+          height: 300px;
+          width: 100%;
+          position: relative;
+          margin-bottom: 50px;
+          .grp {
+            height: 300px;
+          }
+        }
+      }
+    }
   }
 }

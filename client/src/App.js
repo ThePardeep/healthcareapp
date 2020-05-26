@@ -13,6 +13,7 @@ import { SearchResult } from "./Component/Pages/SearchResult";
 import Search from "./Component/Layout/Search";
 import { Hospital } from "./Component/Pages/Hospital";
 import { Splash } from "./Component/Helper/Splash";
+import { About } from "./Component/Pages/About";
 function App(props) {
   return (
     <Router>
@@ -82,6 +83,13 @@ function App(props) {
             path="/hospitals"
             render={(props) => {
               return <Hospital props={props} />;
+            }}
+          />
+
+          <Route
+            path="/about"
+            render={(props) => {
+              return <About />;
             }}
           />
 
